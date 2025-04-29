@@ -8,13 +8,11 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.deepPurple,
-       body: Center(
+    return Center(
          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/quiz-logo.png", width: 250),
+            Image.asset("assets/images/quiz-logo.png", width: 300),
             SizedBox(height: 40),
             Text(
               "Quiz App",
@@ -25,13 +23,15 @@ class LandingScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 40),
-            ElevatedButton(
+            OutlinedButton(
               onPressed: () {},
+              style: OutlinedButton.styleFrom( //predefined button styles
+                foregroundColor: Colors.white
+              ), 
               child: Text("Start Quiz"),
             ),
            ],
          ),
-       ),
     );
   }
 }
