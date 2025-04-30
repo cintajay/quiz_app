@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 
 class LandingScreen extends StatelessWidget {
-  const LandingScreen({
+final void Function() startQuiz;
+
+  const LandingScreen(void Function() this.startQuiz, {
     super.key,
   });
 
@@ -27,7 +29,7 @@ class LandingScreen extends StatelessWidget {
             ),
             SizedBox(height: 40),
             OutlinedButton.icon(
-              onPressed: () {},
+              onPressed: startQuiz,
               style: OutlinedButton.styleFrom( //predefined button styles
                 foregroundColor: Colors.white
               ),
