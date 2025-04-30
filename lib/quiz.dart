@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/landing_screen.dart';
+import 'package:quiz_app/questions.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -11,6 +12,13 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  Widget activeScreen = const LandingScreen();
+
+  void changeScreen() {
+    setState(() {
+      activeScreen = Questions();
+    });
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,7 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: const LandingScreen(),
+          child: activeScreen,
         ),
       ),
     );
