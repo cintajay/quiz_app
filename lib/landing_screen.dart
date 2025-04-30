@@ -12,7 +12,10 @@ class LandingScreen extends StatelessWidget {
          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/quiz-logo.png", width: 300),
+            Image.asset(
+              "assets/images/quiz-logo.png", width: 300,
+               color: const Color.fromARGB(170, 255, 255, 255),
+              ),
             SizedBox(height: 40),
             Text(
               "Quiz App",
@@ -23,12 +26,13 @@ class LandingScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 40),
-            OutlinedButton(
+            OutlinedButton.icon(
               onPressed: () {},
               style: OutlinedButton.styleFrom( //predefined button styles
                 foregroundColor: Colors.white
-              ), 
-              child: Text("Start Quiz"),
+              ),
+              label: Text("Start Quiz"),
+              icon: Icon(Icons.arrow_right_alt),
             ),
            ],
          ),
