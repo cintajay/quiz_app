@@ -12,7 +12,13 @@ class Questions extends StatefulWidget {
 }
 
 class _QuestionsState extends State<Questions> { //_ -> private class  
-  final currentQuestion = questions[0];
+  var currentQuestionIndex = 0;
+
+  void incrementQuestion() {
+    setState(() {
+      currentQuestionIndex+=1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +29,12 @@ class _QuestionsState extends State<Questions> { //_ -> private class
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            currentQuestion.text,
+            questions[currentQuestionIndex].text,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 30),
-          ...currentQuestion.getShuffledAnswers().map((item) {
-            return AnswerButton(answerText: item);
+          ...questions[currentQuestionIndex].getShuffledAnswers().map((item) {
+            return AnswerButton(answerText: item, onTap: incrementQuestion);
           }),
         ],
       ),
