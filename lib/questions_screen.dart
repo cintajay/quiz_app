@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/answer_btn.dart';
 import 'package:quiz_app/data/questions.dart';
 
@@ -31,6 +32,11 @@ class _QuestionsState extends State<Questions> { //_ -> private class
           Text(
             questions[currentQuestionIndex].text,
             textAlign: TextAlign.center,
+            style: GoogleFonts.lato(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 30),
           ...questions[currentQuestionIndex].getShuffledAnswers().map((item) {

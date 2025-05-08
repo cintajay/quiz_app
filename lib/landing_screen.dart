@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class LandingScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ final void Function() startQuiz;
             SizedBox(height: 40),
             Text(
               "Quiz App",
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 color: Colors.white,
                 fontSize: 36,
                 fontWeight: FontWeight.w600,
