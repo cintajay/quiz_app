@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/results_column.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({super.key, required this.onFinish, required this.chosenAnswers});
@@ -8,7 +9,7 @@ class ResultsScreen extends StatelessWidget {
   final void Function() onFinish;
   final List<String> chosenAnswers;
 
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
     for (var i = 0; i < chosenAnswers.length; i++) {
       summary.add(
@@ -25,6 +26,11 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final numTotalQuestions = questions.length;
+    final numCorrectQuestions = summaryData.where((data) {
+      return data['user_answer'] == data['correct_answer'];
+    }).length;
+
     return Container(
       margin: const EdgeInsets.all(40),
       child: Column(
@@ -32,7 +38,7 @@ class ResultsScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'You answered x out of y questions correctly!',
+            'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!',
             style: GoogleFonts.lato(
               color: Colors.white,
               fontSize: 24,
@@ -40,6 +46,8 @@ class ResultsScreen extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
+          const SizedBox(height: 30),
+          ResultsColumn(summaryData: summaryData),
           const SizedBox(height: 30),
           OutlinedButton.icon(
             onPressed: () {
